@@ -50,8 +50,8 @@ public class AddisPailaProject01 {
         max = value;
         minTicker = ticker;
         maxTicker = ticker;
-        minTotal++;
-        maxTotal++;
+        minTotal = 0;
+        maxTotal = 0;
         
         //read file
         while(fileInput.hasNext()){
@@ -67,7 +67,7 @@ public class AddisPailaProject01 {
                 max = value;
                 maxStock = stock;
                 if(!ticker.equals(maxTicker)) {
-                    maxTotal = 1;
+                    maxTotal = 0;
                     maxTicker = ticker;
                 }
             }
@@ -76,19 +76,44 @@ public class AddisPailaProject01 {
                 min = value;
                 minStock = stock;
                 if(!ticker.equals(minTicker)) {
-                    minTotal = 1;
+                    minTotal = 0;
                     minTicker = ticker;
                 }
             }
             
+        }
+        
+        fileInput.close();
+        
+        //reopen file and assign variables
+        Scanner fileInput2 = new Scanner(file);
+        info = fileInput2.nextLine();
+        stock = info.split(",");
+        ticker = stock[1];
+        minTicker = ticker;
+        maxTicker = ticker;
+        minTotal++;
+        maxTotal++;
+        
+        //separate loop to count minimum and maximum stock transactions
+        while(fileInput2.hasNext()) {
+            
+            info = fileInput2.nextLine();
+            stock = info.split(",");
+            ticker = stock[1];
             if(minTicker.equals(ticker)){
                 minTotal++;
+            }
+            else if(!minTicker.equals(ticker) && value < min) {
+                minTotal = 0;
             }
             
             if(maxTicker.equals(ticker)){
                 maxTotal++;
             }
-            
+            else if(!maxTicker.equals(ticker) && value > max) {
+                maxTotal = 0;
+            }
         }
         
         System.out.println("Standard and Poor's Data");

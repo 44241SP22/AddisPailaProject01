@@ -8,7 +8,7 @@ High price:    1.89
 Low price:     1.56
 Closing price: 1.59
 Volume:        49579181
-CHK stock transactions: 1259
+CHK stock transactions: 44
 
 Maximum Closing Stock Information
 Date:          20170808
@@ -18,7 +18,7 @@ High price:    2067.99
 Low price:     2035.11
 Closing price: 2049
 Volume:        830572
-PCLN stock transactions: 1197
+PCLN stock transactions: 1196
 
 Number of stock:     205480
 Stock volume totals: 877575075988
